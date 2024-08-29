@@ -8,12 +8,17 @@ fn main() -> Result<()> {
     let proto_dir: PathBuf =
         PathBuf::from(env::var("PROTO_DIR").unwrap_or(PROTO_DEFAULT_DIR.to_string()));
     let proto_files = &[
-        "proto/openfga/v1/authzmodel.proto",
-        "proto/openfga/v1/errors_ignore.proto",
-        "proto/openfga/v1/openapi.proto",
-        "proto/openfga/v1/openfga.proto",
-        "proto/openfga/v1/openfga_service.proto",
-    ];
+        "openfga/v1/authzmodel.proto",
+        "openfga/v1/errors_ignore.proto",
+        "openfga/v1/openapi.proto",
+        "openfga/v1/openfga.proto",
+        "openfga/v1/openfga_service.proto",
+    ]
+    .map(|p| {
+        let mut ret = proto_dir.clone();
+        ret.push(&p);
+        ret
+    });
     let includes = &[proto_dir
         .to_str()
         .expect("expected proto dir to convert to str")];
