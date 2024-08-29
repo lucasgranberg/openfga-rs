@@ -27,6 +27,7 @@ fn main() -> Result<()> {
         .extern_path(".google.protobuf.Value", "::prost_wkt_types::Value")
         .extern_path(".google.protobuf.ListValue", "::prost_wkt_types::ListValue")
         .extern_path(".google.protobuf.Any", "::prost_wkt_types::Any")
+        .extern_path(".openfga.v1.UserTypeFilter", "UserTypeFilter")
         .file_descriptor_set_path(&descriptor_file);
 
     tonic_build::configure()
